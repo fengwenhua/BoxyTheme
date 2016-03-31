@@ -27,13 +27,13 @@
 {
   "class": "tabset_control",
   "settings": ["theme_otto_global_ui_tiny"],
-  "tab_height": 24
+  "tab_height": 26
 },
 
 {
   "class": "tab_control",
   "settings": ["theme_otto_global_ui_tiny"],
-  "content_margin": [4, 4, 0, 4]
+  "content_margin": [8, 4, 3, 4]
 },
 
 {
