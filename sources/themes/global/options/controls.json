@@ -28,7 +28,7 @@
 {
   "class": "text_line_control",
   "settings": ["theme_otto_global_ui_tiny"],
-  "content_margin": [10, 0]
+  "content_margin": [10, 2]
 },
 
 {
@@ -53,7 +53,7 @@
 {
   "class": "text_line_control",
   "settings": ["theme_otto_find_and_replace_tiny"],
-  "content_margin": [10, 0]
+  "content_margin": [10, 2]
 },
 
 {
