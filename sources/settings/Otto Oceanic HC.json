@@ -1,0 +1,30 @@
+{
+  "name": "Otto Oceanic HC",
+  "author": "Ihor Oleksandrov",
+  "comment": "Otto, your next theme for Sublime Text 3",
+  "semanticClass": "otto.oceanic.dark",
+  "uuid": "3c0c5f22-3f5d-4e0e-9c83-a4ebec9b8b53",
+  "widgetBackground": "#2d3c44",
+  "scheme": {
+    "background": "#111a20",
+    "caret": "#e5e9f0",
+    "foreground": "#d6dbe4",
+    "gutter": "#111a20",
+    "highlight": "#e5e9f0",
+    "invisibles": "#63717c",
+    "base": {
+      "white": "#ffffff",
+      "black": "#000000",
+      "red": "#ee7178",
+      "orange": "#fa9e6b",
+      "yellow": "#fbcf77",
+      "green": "#a6cea1",
+      "cyan": "#6dbaba",
+      "blue": "#75a3d1",
+      "purple": "#cca1cc",
+      "brown": "#b28574",
+      "pink": "#f07178",
+      "violet": "#c28dbb"
+    }
+  }
+}
