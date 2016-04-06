@@ -3755,6 +3755,18 @@
   // ---------------------------------------------------------------------------
   
   {
+    "class": "status_bar",
+    "settings": ["theme_otto_global_ui_tiny"],
+    "content_margin": [5, 2, 5, 2]
+  },
+  
+  {
+    "class": "status_bar",
+    "settings": ["theme_otto_status_bar_tiny"],
+    "content_margin": [5, 2, 5, 2]
+  },
+  
+  {
     "class": "status_container",
     "settings": ["theme_otto_global_ui_tiny"],
     "content_margin": [5, 0, 5, 0]
@@ -4954,13 +4966,13 @@
   {
     "class": "tabset_control",
     "settings": ["theme_otto_global_ui_tiny"],
-    "tab_height": 24
+    "tab_height": 26
   },
   
   {
     "class": "tab_control",
     "settings": ["theme_otto_global_ui_tiny"],
-    "content_margin": [4, 4, 0, 4]
+    "content_margin": [8, 4, 3, 4]
   },
   
   {

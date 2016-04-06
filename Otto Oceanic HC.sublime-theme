@@ -1,4 +1,4 @@
-// > OTTO MONOKAI
+// > OTTO OCEANIC HC
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Your next theme for Sublime Text 3
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,7 +60,7 @@
   
   {
     "class": "auto_complete",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Autocomplete Foreground
@@ -68,7 +68,7 @@
   
   {
     "class": "auto_complete_label",
-    "fg": [185, 185, 183]
+    "fg": [178, 183, 186]
   },
   
   // Autocomplete Blue Accent
@@ -529,7 +529,7 @@
   
   {
     "class": "panel_control",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Progress Bar
@@ -537,7 +537,7 @@
   
   {
     "class": "progress_bar_control",
-    "layer0.tint": [46, 47, 41]
+    "layer0.tint": [34, 50, 58]
   },
   
   // Labels
@@ -545,7 +545,7 @@
   
   {
     "class": "label_control",
-    "color": [185, 185, 183]
+    "color": [178, 183, 186]
   },
   
   // Buttons
@@ -553,12 +553,12 @@
   
   {
     "class": "button_control",
-    "layer0.tint": [46, 47, 41]
+    "layer0.tint": [34, 50, 58]
   },
   
   {
     "class": "icon_button_control",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Fields
@@ -566,13 +566,13 @@
   
   {
     "class": "text_line_control",
-    "layer0.texture": "Theme - Otto/assets/specific/monokai/fields/field.png"
+    "layer0.texture": "Theme - Otto/assets/specific/oceanic/fields/field.png"
   },
   
   {
     "class": "text_line_control",
     "parents": [{"class": "overlay_control"}],
-    "layer0.texture": "Theme - Otto/assets/specific/monokai/fields/field_overlay.png"
+    "layer0.texture": "Theme - Otto/assets/specific/oceanic/fields/field_overlay.png"
   },
   
   // Controls Blue Accent
@@ -1423,7 +1423,7 @@
   
   {
     "class": "grid_layout_control",
-    "border_color": [54, 55, 49]
+    "border_color": [45, 60, 68]
   },
   
   //
@@ -1593,7 +1593,7 @@
   
   {
     "class": "overlay_control",
-    "layer0.texture": "Theme - Otto/assets/specific/monokai/overlays/overlay.png"
+    "layer0.texture": "Theme - Otto/assets/specific/oceanic/overlays/overlay.png"
   },
   
   // Quick Panel
@@ -1605,24 +1605,24 @@
   
   {
     "class": "quick_panel",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   {
     "class": "quick_panel_row",
-    "layer0.tint": [54, 55, 49, 0]
+    "layer0.tint": [45, 60, 68, 0]
   },
   
   {
     "class": "quick_panel_row",
     "parents": [{"class": "overlay_control"}],
-    "layer0.tint": [54, 55, 49, 0]
+    "layer0.tint": [45, 60, 68, 0]
   },
   
   {
     "class": "quick_panel",
     "parents": [{"class": "overlay_control"}],
-    "layer0.tint": [54, 55, 49, 0]
+    "layer0.tint": [45, 60, 68, 0]
   },
   
   //
@@ -1631,12 +1631,12 @@
   
   {
     "class": "mini_quick_panel",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   {
     "class": "mini_quick_panel_row",
-    "layer0.tint": [54, 55, 49, 0]
+    "layer0.tint": [45, 60, 68, 0]
   },
   
   //
@@ -1645,18 +1645,18 @@
   
   {
     "class": "quick_panel_label",
-    "fg": [185, 185, 183, 255]
+    "fg": [178, 183, 186, 255]
   },
   
   {
     "class": "quick_panel_label",
     "parents": [{"class": "overlay_control"}],
-    "fg": [185, 185, 183, 255]
+    "fg": [178, 183, 186, 255]
   },
   
   {
     "class": "quick_panel_path_label",
-    "fg": [124, 125, 121, 255]
+    "fg": [111, 122, 127, 255]
   },
   
   // Overlays Blue Accent
@@ -2007,7 +2007,7 @@
   
   {
     "class": "scroll_corner_control",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   //
@@ -2018,7 +2018,7 @@
   
   {
     "class": "scroll_bar_control",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   //
@@ -2030,7 +2030,7 @@
   {
     "class": "scroll_bar_control",
     "attributes": ["horizontal"],
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Scrollbar Overlayed
@@ -2045,7 +2045,7 @@
   {
     "class": "scroll_bar_control",
     "settings": ["overlay_scroll_bars"],
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   //
@@ -2058,7 +2058,7 @@
     "class": "scroll_bar_control",
     "settings": ["overlay_scroll_bars"],
     "attributes": ["horizontal"],
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Scrollbars Blue Accent
@@ -2780,7 +2780,7 @@
   
   {
     "class": "sidebar_container",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Sidebar Tree
@@ -2792,7 +2792,7 @@
   
   {
     "class": "sidebar_tree",
-    "layer0.tint": [46, 47, 41]
+    "layer0.tint": [34, 50, 58]
   },
   
   //
@@ -2801,7 +2801,7 @@
   
   {
     "class": "tree_row",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Sidebar Labels
@@ -2813,7 +2813,7 @@
   
   {
     "class": "sidebar_heading",
-    "color": [185, 185, 183]
+    "color": [178, 183, 186]
   },
   
   //
@@ -2822,7 +2822,7 @@
   
   {
     "class": "sidebar_label",
-    "color": [185, 185, 183]
+    "color": [178, 183, 186]
   },
   
   {
@@ -3745,7 +3745,7 @@
   
   {
     "class": "status_bar",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   },
   
   // Status Bar Options
@@ -4501,7 +4501,7 @@
   
   {
     "class": "tabset_control",
-    "layer0.tint": [46, 47, 41]
+    "layer0.tint": [34, 50, 58]
   },
   
   // Tab
@@ -4513,14 +4513,14 @@
   
   {
     "class": "tab_control",
-    "layer0.texture": "Theme - Otto/assets/specific/monokai/tabs/tab.png",
-    "layer1.tint": [54, 55, 49]
+    "layer0.texture": "Theme - Otto/assets/specific/oceanic/tabs/tab.png",
+    "layer1.tint": [45, 60, 68]
   },
   
   {
     "class": "tab_control",
     "settings": ["theme_otto_tab_separator_hide"],
-    "layer0.texture": "Theme - Otto/assets/specific/monokai/tabs/tab_without_separator.png"
+    "layer0.texture": "Theme - Otto/assets/specific/oceanic/tabs/tab_without_separator.png"
   },
   
   //
@@ -4529,13 +4529,13 @@
   
   {
     "class": "tab_label",
-    "fg": [185, 185, 183, 255]
+    "fg": [178, 183, 186, 255]
   },
   
   {
     "class": "tab_label",
     "parents": [{"class": "tab_control", "attributes": ["hover"]}],
-    "fg": [185, 185, 183, 255]
+    "fg": [178, 183, 186, 255]
   },
   
   // Light Color Scheme
@@ -5355,12 +5355,12 @@
   
   {
     "class": "sheet_container_control",
-    "layer0.tint": [46, 47, 41]
+    "layer0.tint": [34, 50, 58]
   },
   
   {
     "class": "dialog",
-    "layer0.tint": [54, 55, 49]
+    "layer0.tint": [45, 60, 68]
   }
   
 ]
