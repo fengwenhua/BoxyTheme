@@ -1,408 +1,239 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/oivva/otto-goodies/master/media/logo.png" alt="Otto, your next interface theme for Sublime Text 3">
-</p>
+<p align="center"><img src="https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/name.gif?v=240620161444" alt="BOXY"></p>
 
 <p align="center">
-    <a href="https://www.patreon.com/oivva" target="_blank">
-       <img src="https://raw.githubusercontent.com/oivva/otto-goodies/master/media/donate.png" alt="Click here to lend your support to: Otto and make a donation at patreon.com !"> 
-    </a>
+  <a href="https://github.com/oivva/boxy/releases"><img src="https://img.shields.io/github/release/oivva/boxy.svg?maxAge=3600&style=flat-square" alt="Release"></a>
+  <a href="https://packagecontrol.io/packages/Boxy%20Theme"><img src="https://img.shields.io/packagecontrol/dt/Boxy%20Theme.svg?maxAge=3600&style=flat-square" alt="Downloads"></a>
+  <a href="https://travis-ci.org/oivva/boxy"><img src="https://img.shields.io/travis/oivva/boxy.svg?maxAge=3600&style=flat-square" alt="Build Status"></a>
+  <a href="https://gitter.im/oivva/boxy"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000&style=flat-square" alt="Gitter"></a>
+  <a href="https://github.com/oivva/boxy/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000&style=flat-square" alt="License"></a>&nbsp;
+  <a href="https://twitter.com/oivvatweets" title="Share via Twitter"><img src="https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/twitter.png" alt="Twitter"></a>&nbsp;
+  <a href="https://www.patreon.com/oivva" title="Donate with Patreon"><img src="https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/patreon.png" alt="Click here to lend your support to: Boxy and make a donation at patreon.com"></a>&nbsp;
+  <a href="https://flattr.com/profile/oivva" title="Donate with Flattr"><img src="https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/flattr.png" alt="Click here to lend your support to: Boxy and make a donation at flattr.com !"></a>&nbsp;
+  <a href="https://www.coinbase.com/oivva" title="Donate with Bitcoin"><img src="https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/bitcoin.png" alt="Click here to lend your support to: Boxy and make a donation at coinbase.com !"></a>
 </p>
 
-<p align="center">
-  <a href="https://github.com/oivva/otto/releases"><img src="https://img.shields.io/github/release/oivva/otto.svg?style=flat-square" alt="Release"></a>
-  <a href="https://packagecontrol.io/packages/Theme%20-%20Otto"><img src="https://img.shields.io/packagecontrol/dt/Theme%20-%20Otto.svg?style=flat-square" alt="Downloads"></a>
-  <a href="https://travis-ci.org/oivva/otto"><img src="https://img.shields.io/travis/oivva/otto.svg?style=flat-square" alt="Build Status"></a>
-</p>
+***
 
-Easy customizable interface and syntax themes for **Sublime Text 3 3083+**. Come in, both, light and dark variations. All color schemes are optimized for JavaScript syntax highlighter (including [babel-sublime](https://github.com/babel/babel-sublime)).
+A set of easy customizable interface and syntax themes for **Sublime Text 3 3103+**. Comes in, both, light and dark variations. There are dozens of [**options**][settings] that enable you to personalize your experience with `Boxy Theme`, don't forget to check [them][settings] out.
 
-**NOTE:** Active tab has the same background color as the background of the active color scheme to fit it more gracefully.
+Want to contribute some code? Excellent! Read up on our [guidelines](https://github.com/oivva/boxy/blob/dev/.github/CONTRIBUTING.md).
 
-*If you have some problems, first search for a similar issue, and then report with [new one](https://github.com/oivva/otto/issues).*
+If you have some problems, first search for a similar issue, and then report with [new one][issues]. Please read the [**Known Issues**][known-issues] section before reporting a new one.
 
-Please read the [Known Issues](#known-issues) section before reporting a new one.
+Want to learn more? [**See the wiki &#8594;**][wiki].
 
 ***
 
-## Table of Contents
-
-<!-- MarkdownTOC depth=2 autolink=true bracket=round -->
-
-- [Themes](#themes)
-- [Installation](#installation)
-- [Activation](#activation)
-- [Customization](#customization)
-- [Recommended Settings](#recommended-settings)
-- [HiDPI Support](#hidpi-support)
-- [References](#references)
-- [Contributing](#contributing)
-- [Design & Extras](#design--extras)
-- [Known Issues](#known-issues)
-
-<!-- /MarkdownTOC -->
+<div><a href="#boxy-yesterday">Yesterday</a>&nbsp;▪&nbsp;<a href="#boxy-tomorrow">Tomorrow</a>&nbsp;▪&nbsp;<a href="#boxy-ocean">Ocean</a>&nbsp;▪&nbsp;<a href="#boxy-monokai">Monokai</a>&nbsp;▪&nbsp;<a href="#share-the-love">Share The Love</a></div>
 
 ***
 
-## Themes
+### Quick Start
 
-### Otto Yesterday
+See our [Gallery][gallery] for more quick start examples. **All available options** can be found [**here**][settings].
 
-Best for light color schemes, especially good with **Otto Yesterday** & [**Base16 Tomorrow Light**](http://chriskempson.github.io/base16/#tomorrow).
+> DON'T FORGET TO RESTART SUBLIME TEXT AFTER ACTIVATING OR RE-ACTIVATING THE THEME.
 
-![Otto Yesterday](https://raw.githubusercontent.com/oivva/otto-goodies/master/media/yesterday.gif)
+#### Boxy Yesterday
 
-### Otto Tomorrow
+[![Boxy Yesterday][img-yesterday]][img-yesterday]
 
-Best for dark color schemes, especially good with **Otto Tomorrow** & [**Zenburn**](https://github.com/colinta/zenburn).
-
-![Otto Tomorrow](https://raw.githubusercontent.com/oivva/otto-goodies/master/media/tomorrow.gif)
-
-### Otto Oceanic
-
-Best for dark color schemes, especially good with **Otto Oceanic**, [**Solarized Dark**](https://github.com/braver/Solarized) & [**Cobalt2**](https://github.com/wesbos/cobalt2).
-
-![Otto Oceanic](https://raw.githubusercontent.com/oivva/otto-goodies/master/media/oceanic.gif)
-
-### Otto Monokai
-
-Best for dark color schemes, especially good with [**Monokai Extended**](https://github.com/jonschlinkert/sublime-monokai-extended) & [**Monokai Neue**](https://github.com/josh-kaplan/sublime-monokai-neue).
-
-![Otto Monokai](https://raw.githubusercontent.com/oivva/otto-goodies/master/media/monokai.gif)
-
-***
-
-## Installation
-
-### Package Control
-
-The easiest way to install is using [Sublime Package Control](https://sublime.wbond.net), where [Otto](https://packagecontrol.io/packages/Theme%20-%20Otto) is listed as `Theme - Otto`.
-
-1. Open *Command Palette* using menu item `Tools -> Command Palette...` (OS X: <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> | Windows/Linux: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>)
-2. Choose `Package Control: Install Package`
-3. Find `Theme - Otto` and hit <kbd>Enter</kbd>
-
-
-### Manual
-
-You can also install the theme manually:
-
-1. [Download the .zip](https://github.com/oivva/otto/releases)
-2. Unzip and rename the folder to `Theme - Otto`
-3. Copy the folder into `Packages` directory, which you can find using the menu item `Preferences -> Browse Packages...`
-
-***
-
-## Activation
-
-![Activation](https://raw.githubusercontent.com/oivva/otto-goodies/master/docs/activation.gif)
-
-Activate the UI theme and color scheme by modifying your user preferences file, which you can find using the menu item `Preferences -> Settings - User`.
-
-**DON'T FORGET TO RESTART SUBLIME TEXT AFTER ACTIVATING THE THEME.**
+The screenshot above shows next options in action:
 
 ```js
-// Otto Yesterday
-// -----------------
+// Activation
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Yesterday.tmTheme",
+"theme": "Boxy Yesterday.sublime-theme",
 
-"theme": "Otto Yesterday.sublime-theme",
-"color_scheme": "Packages/Theme - Otto/schemes/Otto Yesterday.tmTheme",
-
-// Otto Tomorrow
-// -----------------
-
-"theme": "Otto Tomorrow.sublime-theme",
-"color_scheme": "Packages/Theme - Otto/schemes/Otto Tomorrow.tmTheme",
-
-// Otto Oceanic
-// -----------------
-
-"theme": "Otto Oceanic.sublime-theme",
-"color_scheme": "Packages/Theme - Otto/schemes/Otto Oceanic.tmTheme",
-
-// Otto Monokai
-// -----------------
-
-"theme": "Otto Monokai.sublime-theme",
-"color_scheme": "Packages/Theme - Otto/schemes/Otto Monokai.tmTheme",
+// Additional Settings
+"theme_bar_margin_top_sm": true,
+"theme_button_rounded": true,
+"theme_find_panel_close_hidden": true,
+"theme_find_panel_size_xs": true,
+"theme_font_md": true,
+"theme_grid_border_size_lg": true,
+"theme_icon_button_highlighted": true,
+"theme_sidebar_font_lg": true,
+"theme_tab_arrows_hidden": true,
+"theme_tab_rounded": true,
+"theme_tab_selected_prelined": true,
+"theme_tab_separator": true,
+"theme_tab_size_md": true,
 ```
+
+The operating system is **macOS**. The font used for the code is [**Fira Code**][fira-code]. The UI font is [**San Francisco Text**][san-francisco] (via [addon][addon-font-face]).
+
+Installed packages:
+
+* [Boxy Theme Addon - Font Face][addon-font-face]
+* [Boxy Theme Addon - Widget Font LG][addon-widget-font-lg]
+* [Boxy Theme Addon - Linter Theme][addon-linter-theme]
+* [Git Gutter][git-gutter]
+* [Sublime Linter][sublime-linter]
+* [Bracket Highlighter][bracket-highlighter]
+
+#### Boxy Tomorrow
+
+[![Boxy Tomorrow][img-tomorrow]][img-tomorrow]
+
+The screenshot above shows next options in action:
+
+```js
+// Activation
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Tomorrow.tmTheme",
+"theme": "Boxy Tomorrow.sublime-theme",
+
+// Additional Settings
+"theme_accent_orange": true,
+"theme_font_md": true,
+"theme_scrollbar_colored": true,
+"theme_scrollbar_line": true,
+"theme_sidebar_folder_monochrome": true,
+"theme_tab_line_size_lg": true,
+"theme_tab_selected_transparent": true,
+"theme_tab_selected_underlined": true,
+"theme_tab_size_lg": true,
+"theme_sidebar_size_xs": true,
+```
+
+The operating system is **Ubuntu**. The font used for the code is [**Ubuntu Mono**][ubuntu]. The UI font is [**Ubuntu Medium**][ubuntu] (via [addon][addon-font-face]).
+
+Installed packages:
+
+* [Boxy Theme Addon - Font Face][addon-font-face]
+* [Boxy Theme Addon - Widget Font XL][addon-widget-font-xl]
+
+#### Boxy Ocean
+
+[![Boxy Ocean][img-ocean]][img-ocean]
+
+The screenshot above shows next options in action:
+
+```js
+// Activation
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
+"theme": "Boxy Ocean.sublime-theme",
+
+// Additional Settings
+"theme_accent_green": true,
+"theme_bar_margin_top_md": true,
+"theme_find_panel_size_xs": true,
+"theme_icon_button_highlighted": true,
+"theme_sidebar_size_md": true,
+"theme_statusbar_size_xs": true,
+"theme_tab_arrows_hidden": true,
+"theme_tab_selected_filled": true,
+"theme_tab_separator": true,
+"theme_tab_size_md": true,
+```
+
+The operating system is **Windows**. The font used for the code is [**Roboto Mono**][ubuntu].
+
+Installed packages:
+
+* [Boxy Theme Addon - Linter Theme][addon-linter-theme]
+* [Sublime Linter][sublime-linter]
+* [Bracket Highlighter][bracket-highlighter]
+* [Color Highlighter][color-highlighter]
+* [Color ​Helper][color-helper]
+
+#### Boxy Monokai
+
+[![Boxy Monokai][img-monokai]][img-monokai]
+
+The screenshot above shows next options in action:
+
+```js
+// Activation
+"color_scheme": "Packages/Boxy Theme/schemes/Boxy Monokai.tmTheme",
+"theme": "Boxy Monokai.sublime-theme",
+
+// Additional Settings
+"theme_accent_purple": true,
+"theme_bar": true,
+"theme_find_panel_close_hidden": true,
+"theme_icon_button_highlighted": true,
+"theme_quick_panel_size_md": true,
+"theme_sidebar_size_xs": true,
+"theme_tab_line_size_lg": true,
+"theme_tab_selected_transparent": true,
+"theme_tab_selected_underlined": true,
+"theme_tab_size_xl": true,
+```
+
+The operating system is **Windows**. The font used for the code is [**Source Code Pro**][source-code-pro].
+
+Installed packages:
+
+* [Boxy Theme Addon - Linter Theme][addon-linter-theme]
+* [Sublime Linter][sublime-linter]
 
 ***
 
-## Customization
-
-**NOTE:** Some of the options may not work properly due to these well-known bugs & suggestions
-
-- [Increasing font size of file tabs cuts off the font](https://forum.sublimetext.com/t/increaseing-font-size-of-file-tabs-cuts-off-the-font/7009)
-- [Sidebar improvements](https://forum.sublimetext.com/t/sugestion-ui-sidebar-improvements/18028)
-- [Quick panel font size](https://forum.sublimetext.com/t/quick-panel-font-size/4046)
-- [Change font in quick panel](https://forum.sublimetext.com/t/change-font-in-quick-panel/7855)
-
-_You can vote for these issues._
-
-### Global Options
-
-#### Sizes
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_global_ui_medium": true,
-
-// Available
-// -----------------
-
-"theme_otto_global_ui_small": true,
-"theme_otto_global_ui_large": true,
-```
-
-#### Font
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_global_font_size_11": true,
-
-// Available
-// -----------------
-
-"theme_otto_global_font_size_12": true,
-"theme_otto_global_font_size_13": true,
-"theme_otto_global_font_size_14": true,
-"theme_otto_global_font_size_15": true,
-```
-
-#### Accent Colors
-
-![Accents](https://raw.githubusercontent.com/oivva/otto-goodies/master/docs/accents.gif)
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_accent_blue": true,
-
-// Available
-// -----------------
-
-"theme_otto_accent_green": true,
-"theme_otto_accent_orange": true,
-"theme_otto_accent_purple": true,
-```
-
-### Tabs
-
-![Tabs](https://raw.githubusercontent.com/oivva/otto-goodies/master/docs/tabs.gif)
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_tab_selected_default": true,
-"theme_otto_tab_medium": true,
-"theme_otto_tab_auto_width": false,
-"theme_otto_tab_label_bold": false,
-"theme_otto_tab_selected_label_bold": false,
-"theme_otto_mouse_wheel_switches_tabs": false,
-"theme_otto_tab_font_size_11": true,
-
-// Available
-// -----------------
-
-"theme_otto_tab_selected_underlined": true,
-"theme_otto_tab_selected_prelined": true,
-"theme_otto_tab_selected_filled": true,
-
-"theme_otto_tab_small": true,
-"theme_otto_tab_large": true,
-"theme_otto_tab_auto_width": true,
-
-"theme_otto_tab_label_bold": true,
-"theme_otto_tab_selected_label_bold": true,
-"theme_otto_mouse_wheel_switches_tabs": true,
-"theme_otto_tab_separator_hide": true,
-
-"theme_otto_tab_font_size_12": true,
-"theme_otto_tab_font_size_13": true,
-"theme_otto_tab_font_size_14": true,
-"theme_otto_tab_font_size_15": true,
-```
-
-### Scrollbars
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_scrollbars_monochrome": false,
-"theme_otto_scrollbars_wide": false,
-
-// Available
-// -----------------
-
-"theme_otto_scrollbars_monochrome": true,
-"theme_otto_scrollbars_wide": true,
-```
-
-### Widgets
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_find_and_replace_close_hide": false,
-"theme_otto_find_and_replace_small": false,
-"theme_otto_find_and_replace_font_size_11": true,
-
-// Available
-// -----------------
-
-"theme_otto_find_and_replace_close_hide": true,
-"theme_otto_find_and_replace_small": true,
-
-"theme_otto_find_and_replace_font_size_12": true,
-"theme_otto_find_and_replace_font_size_13": true,
-"theme_otto_find_and_replace_font_size_14": true,
-"theme_otto_find_and_replace_font_size_15": true,
-```
-
-### Statusbar
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_status_bar_medium": true,
-"theme_otto_status_bar_font_size_11": true,
-
-// Available
-// -----------------
-
-"theme_otto_status_bar_small": true,
-"theme_otto_status_bar_large": true,
-
-"theme_otto_status_bar_font_size_12": true,
-"theme_otto_status_bar_font_size_13": true,
-"theme_otto_status_bar_font_size_14": true,
-"theme_otto_status_bar_font_size_15": true,
-```
-
-### Sidebar
-
-```js
-// By Default
-// -----------------
-
-"theme_otto_sidebar_medium": true,
-"theme_otto_sidebar_folder_arrow": false,
-"theme_otto_sidebar_hide_file_icons": false,
-"theme_otto_sidebar_font_size_11": true,
-
-// Available
-// -----------------
-
-"theme_otto_sidebar_small": true,
-"theme_otto_sidebar_large": true,
-
-"theme_otto_sidebar_folder_arrow": true,
-"theme_otto_sidebar_hide_file_icons": true,
-
-"theme_otto_sidebar_font_size_12": true,
-"theme_otto_sidebar_font_size_13": true,
-"theme_otto_sidebar_font_size_14": true,
-"theme_otto_sidebar_font_size_15": true,
-```
-
-### Even More
-
-You can customize themes via [PackageResourceViewer](https://github.com/skuroda/PackageResourceViewer). E.g. Due to Sublime Text 3 limitations related to the widget styling, you can find that colors of the cursor in the editor and find panel are different. That's why I always add similar changes to the theme manually. Let's say I want to change colors of the caret and selection:
-
-![Additional Customizations](https://raw.githubusercontent.com/oivva/otto-goodies/master/docs/additional-customizations.gif)
-
-***
-
-## Recommended Settings
-
-```js
-"always_show_minimap_viewport": true,
-"bold_folder_labels": true,
-"caret_extra_bottom": 1,
-"caret_extra_top": 1,
-"caret_extra_width": 1,
-"caret_style": "blink",
-"fade_fold_buttons": false,
-"indent_guide_options": ["draw_normal", "draw_active"],
-"line_padding_bottom": 2,
-"line_padding_top": 2,
-"overlay_scroll_bars": "enabled",
-"show_encoding": true,
-"show_line_endings": true,
-```
-
-The font used for the code is [**Fira Code**](https://github.com/tonsky/FiraCode).
-
-***
-
-## HiDPI Support
-
-These themes include @1x, @2x, @3x image assets. Sublime Text supports HiDPI in **Mac OS** (works like a charm), but have some issues in **Windows** & **Linux**. Here the dirty fix:
-
-* download psd from [Design](#design--extras),
-* use [PackageResourceViewer](https://github.com/skuroda/PackageResourceViewer) to extract the themes,
-* manually change all @1x assets into needed versions.
-
-***
-
-## References
-
-These themes are heavily inspired by:
-
-* [Predawn](https://github.com/jamiewilson/predawn)
-* [Material Theme](https://github.com/equinusocio/material-theme)
-* [Primer](https://github.com/karelvuong/st-primer)
-* [Piatto](https://github.com/samuelrafo/piatto)
-* [Minimal](https://github.com/AntoineBoulanger/Minimal-Sublime-Text-Theme)
-
-Color schemes are based on:
-
-* [Base16 Color Schemes](https://github.com/chriskempson/base16)
-* [Oceanic Next Color Scheme](https://github.com/voronianski/oceanic-next-color-scheme)
-
-***
-
-## Contributing
-
-**NOTE:** I have no plans to add new themes, only the fixes and improvements to the existing ones. In such cases you're free to fork.
-
-These themes use a custom Gulp builder. If you want to edit them you must install it first:
-
-```bash
-$ npm install
-```
-
-then run watcher by:
-
-```bash
-$ gulp watch
-```
-
-You can now edit the source files under `sources` folder that will be compiled (don't edit compiled files, all sources are inside `sources`).
-
-If you'd like to add some rules and styles to the template of the color schemes, please, do it inside `sources\templates\scheme.YAML-tmTheme`. Run `gulp build:schemes` and then generate `*.tmTheme` files in `schemes` folder with such tool as [PackageDev](https://github.com/SublimeText/PackageDev).
-
-**PRs welcome!😋**
-
-***
-
-## Design & Extras
-
-Also, you can download all assets in psd format and some extras: [Otto Goodies](https://github.com/oivva/otto-goodies)
-
-***
-
-## Known Issues
-
-If you can't see the bottom panel (find/replace, rename, move, can't see the box inputs in SidebarEnhancement, etc..). Here the quick fix:
-
-![Drag the top edge](https://raw.githubusercontent.com/oivva/otto-goodies/master/docs/known-issue.gif)
+### Share The Love
+
+I've put a lot of time and effort into making `Boxy Theme` awesome. If you love it, you can buy me a coffee. Every cup helps! I promise it will be a good investment 😉
+
+**Donate with:**
+
+[![Patreon][img-patreon-with-title]][patreon] &nbsp; [![Flattr][img-flattr-with-title]][flattr] &nbsp; [![Bitcoin][img-bitcoin-with-title]][bitcoin]
+
+<!-- Links -->
+
+[release]: https://github.com/oivva/boxy/releases
+[downloads]: https://packagecontrol.io/packages/Boxy%20Theme
+[build-status]: https://travis-ci.org/oivva/boxy
+[gitter]: https://gitter.im/oivva/boxy
+[license]: https://github.com/oivva/boxy
+[patreon]: https://www.patreon.com/oivva "Donate with Patreon"
+[flattr]: https://flattr.com/profile/oivva "Donate with Flattr"
+[bitcoin]: https://www.coinbase.com/oivva "Donate with Bitcoin"
+[upgrading]: https://github.com/oivva/boxy/wiki/Upgrading
+[issues]: https://github.com/oivva/boxy/issues
+[wiki]: https://github.com/oivva/boxy/wiki
+[gallery]: https://github.com/oivva/boxy/wiki/Gallery
+[website]: http://www.oivva.com/boxy/
+[known-issues]: https://github.com/oivva/boxy/wiki#known-issues
+[pr]: https://github.com/wbond/package_control_channel/pull/5500
+[manual-install]: https://github.com/oivva/boxy/wiki/Get-It#manual
+[settings]: https://github.com/oivva/boxy/wiki/Settings
+
+<!-- Images -->
+
+[img-name]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/name.png
+[img-release]: https://img.shields.io/github/release/oivva/boxy.svg?maxAge=3600&style=flat-square
+[img-downloads]: https://img.shields.io/packagecontrol/dt/Boxy%20Theme.svg?maxAge=3600&style=flat-square
+[img-build-status]: https://img.shields.io/travis/oivva/boxy.svg?maxAge=3600&style=flat-square
+[img-gitter]: https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000&style=flat-square
+[img-license]: https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000&style=flat-square
+[img-patreon]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/patreon.png
+[img-patreon-with-title]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/patreon-with-title.png
+[img-flattr]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/flattr.png
+[img-flattr-with-title]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/flattr-with-title.png
+[img-bitcoin]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/bitcoin.png
+[img-bitcoin-with-title]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/bitcoin-with-title.png
+[img-gallery]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/gallery.gif
+[img-yesterday]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/yesterday.png?v=240620161444
+[img-tomorrow]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/tomorrow.png?v=240620161444
+[img-ocean]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/ocean.png?v=240620161444
+[img-monokai]: https://raw.githubusercontent.com/oivva/boxy-extras/master/assets/readme/monokai.png?v=240620161444
+
+<!-- Fonts -->
+
+[fira-code]: https://github.com/tonsky/FiraCode/blob/master/README.md
+[san-francisco]: https://developer.apple.com/fonts/
+[ubuntu]: http://font.ubuntu.com/
+[roboto-mono]: https://fonts.google.com/specimen/Roboto+Mono?query=Roboto
+[source-code-pro]: http://adobe-fonts.github.io/source-code-pro/
+
+<!-- Packages -->
+
+[addon-font-face]: https://packagecontrol.io/packages/Boxy%20Theme%20Addon%20-%20Font%20Face
+[addon-widget-font-lg]: https://packagecontrol.io/packages/Boxy%20Theme%20Addon%20-%20Widget%20Font%20LG
+[addon-widget-font-xl]: https://packagecontrol.io/packages/Boxy%20Theme%20Addon%20-%20Widget%20Font%20XL
+[addon-linter-theme]: https://packagecontrol.io/packages/Boxy%20Theme%20Addon%20-%20Linter%20Theme
+[git-gutter]: https://packagecontrol.io/packages/GitGutter
+[sublime-linter]: https://packagecontrol.io/packages/SublimeLinter
+[bracket-highlighter]: https://packagecontrol.io/packages/BracketHighlighter
+[color-highlighter]: https://packagecontrol.io/packages/Color%20Highlighter
+[color-helper]: https://packagecontrol.io/packages/ColorHelper

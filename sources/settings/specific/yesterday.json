@@ -1,0 +1,73 @@
+{
+  "name": "Boxy Yesterday",
+  "semanticClass": "boxy.yesterday.light",
+  "uuid": "644320da-6e11-4c6d-9050-f2ed6b8c5049",
+  "ui": {
+    "id": "yesterday",
+    "variant": {
+      "id": "light",
+      "name": "Light"
+    },
+    "background": {
+      "primary": {
+        "hex": "#f7f7f7",
+        "rgb": "247, 247, 247"
+      },
+      "secondary": {
+        "hex": "#eeeeee",
+        "rgb": "238, 238, 238"
+      },
+      "base": {
+        "hex": "#000000",
+        "rgb": "0, 0, 0"
+      }
+    },
+    "foreground": {
+      "default": {
+        "hex": "#7b7b7b",
+        "rgb": "123, 123, 123"
+      },
+      "highlighted": {
+        "hex": "#565656",
+        "rgb": "86, 86, 86"
+      },
+      "disabled": {
+        "hex": "#a1a1a1",
+        "rgb": "161, 161, 161"
+      },
+      "selected": {
+        "hex": "#262626",
+        "rgb": "38, 38, 38"
+      }
+    }
+  },
+  "scheme": {
+    "background": "#ffffff",
+    "caret": "#4d4d4c",
+    "foreground": "#4d4d4c",
+    "gutter": "#ffffff",
+    "invisible": "#00000008",
+    "highlight": "#00000010",
+    "selection": "#00000016",
+    "comment": "#8e908c",
+    "guide": {
+      "default": "#00000025",
+      "stack": "#00000040",
+      "active": "#718c00aa"
+    },
+    "base": {
+      "white": "#ffffff",
+      "black": "#000000",
+      "red": "#c82829",
+      "orange": "#f5871f",
+      "yellow": "#c99e00",
+      "green": "#718c00",
+      "cyan": "#3e999f",
+      "blue": "#4271ae",
+      "purple": "#8959a8",
+      "brown": "#7f2a1d",
+      "pink": "#df5b66",
+      "violet": "#794b96"
+    }
+  }
+}

@@ -14,21 +14,21 @@ var gulp = require('gulp');
 var del = require('del');
 var path = require('path');
 var colors = require('colors');
+var sleep = require('sleep');
 var runSequence = require('run-sequence');
 var conventionalChangelog = require('conventional-changelog');
 var conventionalGithubReleaser = require('conventional-github-releaser');
 var argv = require('yargs').argv;
 var fs = require('fs');
+var _ = require('lodash');
 var $ = require('gulp-load-plugins')();
 
 
 /*
- * > Data
+ * > Settings
  */
 
-var getJsonData = function(file) {
-  return require(file.path);
-};
+var common = require('./sources/settings/common.json');
 
 
 /*
@@ -54,8 +54,7 @@ gulp.task('clean:widgets', function() {
 
 gulp.task('changelog', function() {
   return conventionalChangelog({
-    preset: 'angular',
-    releaseCount: 0
+    preset: 'angular'
   })
   .pipe(fs.createWriteStream('CHANGELOG.md'));
 });
@@ -169,7 +168,7 @@ gulp.task('build', function(cb) {
     'build:widgets',
     function (error) {
       if (error) {
-        console.log('[build]'.bold.magenta + ' There was an issue building Otto:\n'.bold.red + error.message);
+        console.log('[build]'.bold.magenta + ' There was an issue building BOXY:\n'.bold.red + error.message);
       } else {
         console.log('[build]'.bold.magenta + ' Finished successfully'.bold.green);
       }
@@ -188,7 +187,17 @@ gulp.task('build:themes', ['clean:themes'], function() {
       this.emit('end');
     }))
     .pipe($.include())
-    .pipe($.rename({ extname: '.sublime-theme' }))
+    .pipe($.data(function(file) {
+      var specific = require('./sources/settings/specific/' +
+          path.basename(file.path));
+
+      return _.merge(common, specific);
+    }))
+    .pipe($.template())
+    .pipe($.rename(function(path) {
+      path.basename = 'Boxy ' + _.startCase(path.basename);
+      path.extname = '.sublime-theme';
+    }))
     .pipe(gulp.dest('./'))
     .on('end', function() {
       console.log('[build:themes]'.bold.magenta + ' Finished successfully'.bold.green);
@@ -198,36 +207,54 @@ gulp.task('build:themes', ['clean:themes'], function() {
 /* >> Schemes */
 
 gulp.task('build:schemes', ['clean:schemes'], function(cb) {
-  return gulp.src('./sources/settings/*.json')
-    .pipe($.plumber(function(error) {
-      console.log('[build:schemes]'.bold.magenta + ' There was an issue building schemes:\n'.bold.red + error.message);
-      this.emit('end');
-    }))
-    .pipe($.foreach(function(stream, file) {
-      var jsonFile = file;
-      var jsonBasename = path.basename(jsonFile.path, path.extname(jsonFile.path));
+  runSequence(
+    'process:schemes',
+    'convert:schemes',
+    function (error) {
+      if (error) {
+        console.log('[build:schemes]'.bold.magenta + ' There was an issue building schemes:\n'.bold.red + error.message);
+      } else {
+        console.log('[build:schemes]'.bold.magenta + ' Finished successfully'.bold.green);
+      }
 
-      return gulp.src('./sources/templates/scheme.YAML-tmTheme')
-        .pipe($.data(getJsonData(jsonFile)))
+      cb(error);
+    }
+  );
+});
+
+gulp.task('process:schemes', function(cb) {
+  return gulp.src('./sources/settings/specific/*.json')
+    .pipe($.foreach(function(stream, file) {
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
+
+      return gulp.src('./sources/schemes/scheme.YAML-tmTheme')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
         .pipe($.template())
-        .pipe($.rename(function(schemeFile) {
-          schemeFile.basename = jsonBasename;
+        .pipe($.rename(function(scheme) {
+          scheme.basename = basename;
         }))
         .pipe(gulp.dest('./schemes'));
-    }))
-    .on('end', function() {
-      console.log('[build:schemes]'.bold.magenta + ' Finished successfully'.bold.green);
-    });
+    }));
 });
 
 gulp.task('convert:schemes', function() {
   return gulp.src('./schemes/*.YAML-tmTheme')
-    .pipe($.plumber(function(error) {
-      console.log('[convert:schemes]'.bold.magenta + ' There was an issue converting color schemes:\n'.bold.red + error.message +
-                  'To fix this error:\nAdd Sublime Text to the `PATH` and then install "AAAPackageDev" via "Package Control.\nOpen Sublime Text before running the task. "'.bold.blue);
-      this.emit('end');
-    }))
-    .pipe($.exec('subl "<%= file.path %>" --b && subl --b --command "convert_file" && subl --b --command "close_file"'));
+    .pipe($.foreach(function(stream, file) {
+      sleep.sleep(2);
+
+      return stream
+        .pipe($.plumber(function(error) {
+          console.log('[convert:schemes]'.bold.magenta + ' There was an issue converting color schemes:\n'.bold.red + error.message +
+                      'To fix this error:\nAdd Sublime Text to the `PATH` and then install "PackageDev" via "Package Control".\nOpen Sublime Text before running the task.'.bold.blue);
+          this.emit('end');
+        }))
+        .pipe($.exec('subl "<%= file.path %>" && subl --command "convert_file"'))
+        .pipe($.exec.reporter());
+    }));
 });
 
 /* >> Widgets */
@@ -249,35 +276,88 @@ gulp.task('build:widgets', ['clean:widgets'], function(cb) {
 });
 
 gulp.task('build:widget-themes', function() {
-  return gulp.src('./sources/settings/*.json')
+  return gulp.src('./sources/settings/specific/*.json')
     .pipe($.foreach(function(stream, file) {
-      var jsonFile = file;
-      var jsonBasename = path.basename(jsonFile.path, path.extname(jsonFile.path));
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
 
-      return gulp.src('./sources/templates/widget.stTheme')
-        .pipe($.data(getJsonData(jsonFile)))
+      return gulp.src('./sources/widgets/widget.stTheme')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
         .pipe($.template())
-        .pipe($.rename(function(widgetThemeFile) {
-          widgetThemeFile.basename = 'Widget - ' + jsonBasename;
+        .pipe($.rename(function(widget) {
+          widget.basename = 'Widget - ' + basename;
         }))
         .pipe(gulp.dest('./widgets'));
     }));
 });
 
 gulp.task('build:widget-settings', function() {
-  return gulp.src('./sources/settings/*.json')
+  return gulp.src('./sources/settings/specific/*.json')
     .pipe($.foreach(function(stream, file) {
-      var jsonFile = file;
-      var jsonBasename = path.basename(jsonFile.path, path.extname(jsonFile.path));
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
 
-      return gulp.src('./sources/templates/widget.sublime-settings')
-        .pipe($.data(getJsonData(jsonFile)))
+      return gulp.src('./sources/widgets/widget.sublime-settings')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
         .pipe($.template())
-        .pipe($.rename(function(widgetSettingsFile) {
-          widgetSettingsFile.basename = 'Widget - ' + jsonBasename;
+        .pipe($.rename(function(widget) {
+          widget.basename = 'Widget - ' + basename;
         }))
         .pipe(gulp.dest('./widgets'));
     }));
+});
+
+
+/*
+ * > Images
+ */
+
+function getCache() {
+  var cache = {};
+
+  try {
+    cache = JSON.parse(fs.readFileSync('./images.cache', 'utf8'));
+  }
+  catch(e) {
+    console.log('No `images.cache` file!');
+  }
+  finally {
+    return cache;
+  }
+}
+
+gulp.task('optimize', function(cb) {
+  runSequence(
+    'optimize:assets',
+    'optimize:icons',
+    function (error) {
+      if (error) {
+        console.log('[optimize]'.bold.magenta + ' There was an issue optimizing images:\n'.bold.red + error.message);
+      } else {
+        console.log('[optimize]'.bold.magenta + ' Finished successfully'.bold.green);
+      }
+
+      cb(error);
+    }
+  );
+});
+
+gulp.task('optimize:assets', function() {
+  return gulp.src('./assets/**/*.png')
+    .pipe($.imagemin([$.imagemin.optipng()], {verbose: true}))
+    .pipe(gulp.dest('./assets'));
+});
+
+gulp.task('optimize:icons', function() {
+  return gulp.src('./icons/**/*.png')
+    .pipe($.imagemin([$.imagemin.optipng()], {verbose: true}))
+    .pipe(gulp.dest('./icons'));
 });
 
 
@@ -287,9 +367,9 @@ gulp.task('build:widget-settings', function() {
 
 gulp.task('watch', function() {
   gulp.watch('./sources/themes/**/*.json', ['build:themes']);
-  gulp.watch('./sources/templates/scheme.YAML-tmTheme', ['build:schemes']);
-  gulp.watch('./sources/templates/widget.*', ['build:widgets']);
-  gulp.watch('./sources/settings/*.json', ['build:schemes', 'build:widgets']);
+  gulp.watch('./sources/schemes/scheme.YAML-tmTheme', ['build:schemes']);
+  gulp.watch('./sources/widgets/widget.*', ['build:widgets']);
+  gulp.watch('./sources/settings/**/*.json', ['build:schemes', 'build:widgets', 'build:themes']);
 });
 
 

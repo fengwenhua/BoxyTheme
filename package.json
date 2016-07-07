@@ -1,44 +1,49 @@
 {
-  "name": "otto",
-  "version": "1.1.0",
-  "description": "Your next theme for Sublime Text 3",
+  "name": "boxy",
+  "version": "2.0.3",
+  "description": "Definitely, your next theme for Sublime Text 3",
   "keywords": [
-    "otto",
+    "boxy",
     "ui",
     "sublime",
     "text",
-    "theme"
+    "theme",
+    "color",
+    "scheme"
   ],
   "author": "Ihor Oleksandrov",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oivva/otto.git"
+    "url": "https://github.com/oivva/boxy.git"
   },
   "bugs": {
-    "url": "https://github.com/oivva/otto/issues"
+    "url": "https://github.com/oivva/boxy/issues"
   },
   "main": "gulpfile.js",
   "devDependencies": {
     "colors": "^1.1.2",
-    "conventional-changelog": "^0.5.3",
-    "conventional-github-releaser": "^0.5.3",
+    "conventional-changelog": "^1.1.0",
+    "conventional-github-releaser": "^1.1.2",
     "del": "^2.2.0",
     "fs": "^0.0.2",
     "gulp": "^3.9.0",
-    "gulp-bump": "^1.0.0",
+    "gulp-bump": "^2.1.0",
     "gulp-data": "^1.2.1",
     "gulp-exec": "^2.1.2",
     "gulp-foreach": "^0.1.0",
     "gulp-git": "^1.7.0",
     "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^3.0.1",
     "gulp-include": "^2.1.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-template": "^3.1.0",
+    "gulp-template": "^4.0.0",
+    "lodash": "^4.11.1",
     "path": "^0.12.7",
     "run-sequence": "^1.1.5",
-    "yargs": "^3.32.0"
+    "sleep": "^3.0.1",
+    "yargs": "^4.7.1"
   }
 }
