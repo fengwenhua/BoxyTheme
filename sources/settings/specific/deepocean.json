@@ -1,0 +1,73 @@
+{
+  "name": "Boxy Deepocean",
+  "semanticClass": "boxy.deepocean.dark",
+  "uuid": "0e709986-46a0-40a0-b3bf-c8dfe525c456",
+  "ui": {
+    "id": "deepocean",
+    "variant": {
+      "id": "dark",
+      "name": "Dark"
+    },
+    "background": {
+      "primary": {
+        "hex": "#22323a",
+        "rgb": "34, 50, 58"
+      },
+      "secondary": {
+        "hex": "#2d3c44",
+        "rgb": "45, 60, 68"
+      },
+      "base": {
+        "hex": "#ffffff",
+        "rgb": "255, 255, 255"
+      }
+    },
+    "foreground": {
+      "default": {
+        "hex": "#91999d",
+        "rgb": "145, 153, 157"
+      },
+      "highlighted": {
+        "hex": "#b2b7ba",
+        "rgb": "178, 183, 186"
+      },
+      "disabled": {
+        "hex": "#6f7a7f",
+        "rgb": "111, 122, 127"
+      },
+      "selected": {
+        "hex": "#dddfe1",
+        "rgb": "221, 223, 225"
+      }
+    }
+  },
+  "scheme": {
+    "background": "#111a20",
+    "caret": "#e5e9f0",
+    "foreground": "#d6dbe4",
+    "gutter": "#111a20",
+    "invisible": "#63717c",
+    "highlight": "#e5e9f01a",
+    "selection": "#e5e9f04d",
+    "comment": "#65737e",
+    "guide": {
+      "default": "#ffffff25",
+      "stack": "#ffffff40",
+      "active": "#99c794aa"
+    },
+    "base": {
+      "white": "#ffffff",
+      "black": "#000000",
+      "red": "#ee7178",
+      "orange": "#fa9e6b",
+      "yellow": "#fbcf77",
+      "green": "#a6cea1",
+      "cyan": "#6dbaba",
+      "blue": "#75a3d1",
+      "purple": "#cca1cc",
+      "brown": "#b28574",
+      "pink": "#f07178",
+      "violet": "#c28dbb"
+    }
+  }
+}
