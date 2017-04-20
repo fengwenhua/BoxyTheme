@@ -32,9 +32,9 @@
 				<key>lineHighlight</key>
 				<string>#00000010</string>
 				<key>selection</key>
-				<string>#00000016</string>
+				<string>#00000040</string>
 				<key>selectionBorder</key>
-				<string>#00000016</string>
+				<string>#00000040</string>
 				<key>stackGuide</key>
 				<string>#00000040</string>
 			</dict>
