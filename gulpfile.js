@@ -5,7 +5,6 @@
 
 'use strict';
 
-
 /*
  * > Plugins
  */
@@ -14,7 +13,6 @@ var gulp = require('gulp');
 var del = require('del');
 var path = require('path');
 var colors = require('colors');
-var sleep = require('sleep');
 var runSequence = require('run-sequence');
 var conventionalChangelog = require('conventional-changelog');
 var conventionalGithubReleaser = require('conventional-github-releaser');
@@ -23,13 +21,12 @@ var fs = require('fs');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')();
 
-
 /*
  * > Settings
  */
 
 var common = require('./sources/settings/common.json');
-
+var envRegExp = new RegExp('([\'|\"]?__version__[\'|\"]?[ ]*[:|=][ ]*[\'|\"]?)(\\d+\\.\\d+\\.\\d+)(-[0-9A-Za-z\.-]+)?([\'|\"]?)', 'i');
 
 /*
  * > Clean
@@ -47,115 +44,13 @@ gulp.task('clean:widgets', function() {
   return del(['./widgets/*.stTheme', './widgets/*.sublime-settings']);
 });
 
-
-/*
- * > Generate CHANGELOG
- */
-
-gulp.task('changelog', function() {
-  return conventionalChangelog({
-    preset: 'angular'
-  })
-  .pipe(fs.createWriteStream('CHANGELOG.md'));
+gulp.task('clean:extras', function() {
+  return del(['./extras/**/*.hidden-tmTheme', './extras/**/*.YAML-tmTheme']);
 });
 
-
-/*
- * > Github Release
- */
-
-gulp.task('github-release', function(done) {
-  conventionalGithubReleaser({
-    type: 'oauth',
-    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
-  }, {
-    preset: 'angular'
-  }, done);
+gulp.task('clean:addons', function() {
+  return del(['./addons/**/*.addon-theme', './addons/**/*.addon-settings']);
 });
-
-
-/*
- * > Bump Version
- */
-
-gulp.task('bump', function(cb) {
-  runSequence(
-    'bump-version',
-    'commit-version',
-    function (error) {
-      if (error) {
-        console.log('[bump]'.bold.magenta + ' There was an issue bumping version:\n'.bold.red + error.message);
-      } else {
-        console.log('[bump]'.bold.magenta + ' Finished successfully'.bold.green);
-      }
-      cb(error);
-    }
-  );
-});
-
-gulp.task('bump-version', function() {
-  return gulp.src('./package.json')
-    .pipe($.if((Object.keys(argv).length === 2), $.bump()))
-    .pipe($.if(argv.patch, $.bump()))
-    .pipe($.if(argv.minor, $.bump({ type: 'minor' })))
-    .pipe($.if(argv.major, $.bump({ type: 'major' })))
-    .pipe(gulp.dest('./'));
-});
-
-
-/*
- * > Git
- */
-
-gulp.task('commit-version', function() {
-  return gulp.src('.')
-    .pipe($.git.add())
-    .pipe($.git.commit('chore: bump version number'));
-});
-
-gulp.task('commit-changelog', function() {
-  return gulp.src('.')
-    .pipe($.git.add())
-    .pipe($.git.commit('chore: update CHANGELOG.md'));
-});
-
-gulp.task('create-new-tag', function(cb) {
-  var version = getPackageJsonVersion();
-
-  $.git.tag('v' + version, 'version: ' + version, function (error) {
-    if (error) {
-      return cb(error);
-    }
-    $.git.push('origin', 'master', {args: '--tags'}, cb);
-  });
-
-  function getPackageJsonVersion() {
-    return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-  }
-});
-
-
-/*
- * > Release
- */
-
-gulp.task('release', function(cb) {
-  runSequence(
-    'changelog',
-    'commit-changelog',
-    'create-new-tag',
-    'github-release',
-    function (error) {
-      if (error) {
-        console.log('[release]'.bold.magenta + ' There was an issue releasing themes:\n'.bold.red + error.message);
-      } else {
-        console.log('[release]'.bold.magenta + ' Finished successfully'.bold.green);
-      }
-      cb(error);
-    }
-  );
-});
-
 
 /*
  * > Build
@@ -166,6 +61,8 @@ gulp.task('build', function(cb) {
     'build:themes',
     'build:schemes',
     'build:widgets',
+    'build:extras',
+    'build:addons',
     function (error) {
       if (error) {
         console.log('[build]'.bold.magenta + ' There was an issue building BOXY:\n'.bold.red + error.message);
@@ -222,9 +119,9 @@ gulp.task('build:schemes', ['clean:schemes'], function(cb) {
   );
 });
 
-gulp.task('process:schemes', function(cb) {
+gulp.task('process:schemes', function() {
   return gulp.src('./sources/settings/specific/*.json')
-    .pipe($.foreach(function(stream, file) {
+    .pipe($.flatmap(function(stream, file) {
       var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
 
       return gulp.src('./sources/schemes/scheme.YAML-tmTheme')
@@ -243,9 +140,7 @@ gulp.task('process:schemes', function(cb) {
 
 gulp.task('convert:schemes', function() {
   return gulp.src('./schemes/*.YAML-tmTheme')
-    .pipe($.foreach(function(stream, file) {
-      sleep.sleep(2);
-
+    .pipe($.flatmap(function(stream) {
       return stream
         .pipe($.plumber(function(error) {
           console.log('[convert:schemes]'.bold.magenta + ' There was an issue converting color schemes:\n'.bold.red + error.message +
@@ -277,7 +172,7 @@ gulp.task('build:widgets', ['clean:widgets'], function(cb) {
 
 gulp.task('build:widget-themes', function() {
   return gulp.src('./sources/settings/specific/*.json')
-    .pipe($.foreach(function(stream, file) {
+    .pipe($.flatmap(function(stream, file) {
       var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
 
       return gulp.src('./sources/widgets/widget.stTheme')
@@ -296,7 +191,7 @@ gulp.task('build:widget-themes', function() {
 
 gulp.task('build:widget-settings', function() {
   return gulp.src('./sources/settings/specific/*.json')
-    .pipe($.foreach(function(stream, file) {
+    .pipe($.flatmap(function(stream, file) {
       var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
 
       return gulp.src('./sources/widgets/widget.sublime-settings')
@@ -313,24 +208,116 @@ gulp.task('build:widget-settings', function() {
     }));
 });
 
+/* >> Extras */
+
+gulp.task('build:extras', ['clean:extras'], function(cb) {
+  runSequence(
+    'process:extras',
+    'convert:extras',
+    function (error) {
+      if (error) {
+        console.log('[build:extras]'.bold.magenta + ' There was an issue building extras:\n'.bold.red + error.message);
+      } else {
+        console.log('[build:extras]'.bold.magenta + ' Finished successfully'.bold.green);
+      }
+
+      cb(error);
+    }
+  );
+});
+
+gulp.task('process:extras', function() {
+  return gulp.src('./sources/settings/specific/*.json')
+    .pipe($.flatmap(function(stream, file) {
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
+
+      return gulp.src('./sources/extras/**/*.YAML-tmTheme')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
+        .pipe($.template())
+        .pipe($.rename(function(scheme) {
+          scheme.basename = basename;
+        }))
+        .pipe(gulp.dest('./extras'));
+    }));
+});
+
+gulp.task('convert:extras', function() {
+  return gulp.src('./extras/**/*.YAML-tmTheme')
+    .pipe($.flatmap(function(stream) {
+      return stream
+        .pipe($.plumber(function(error) {
+          console.log('[convert:extras]'.bold.magenta + ' There was an issue converting color extras:\n'.bold.red + error.message +
+                      'To fix this error:\nAdd Sublime Text to the `PATH` and then install "PackageDev" via "Package Control".\nOpen Sublime Text before running the task.'.bold.blue);
+          this.emit('end');
+        }))
+        .pipe($.exec('subl "<%= file.path %>" && subl --command "convert_file"'))
+        .pipe($.exec.reporter());
+    }));
+});
+
+/* >> Add-ons */
+
+gulp.task('build:addons', ['clean:addons'], function(cb) {
+  runSequence(
+    'build:addon-themes',
+    'build:addon-settings',
+    function (error) {
+      if (error) {
+        console.log('[build:addons]'.bold.magenta + ' There was an issue building addons:\n'.bold.red + error.message);
+      } else {
+        console.log('[build:addons]'.bold.magenta + ' Finished successfully'.bold.green);
+      }
+
+      cb(error);
+    }
+  );
+});
+
+gulp.task('build:addon-themes', function() {
+  return gulp.src('./sources/settings/specific/*.json')
+    .pipe($.flatmap(function(stream, file) {
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
+
+      return gulp.src('./sources/addons/**/*.addon-theme')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
+        .pipe($.template())
+        .pipe($.rename(function(widget) {
+          widget.basename = 'Widget - ' + basename;
+        }))
+        .pipe(gulp.dest('./addons'));
+    }));
+});
+
+gulp.task('build:addon-settings', function() {
+  return gulp.src('./sources/settings/specific/*.json')
+    .pipe($.flatmap(function(stream, file) {
+      var basename = 'Boxy ' + _.startCase(path.basename(file.path, path.extname(file.path)));
+
+      return gulp.src('./sources/addons/**/*.addon-settings')
+        .pipe($.data(function() {
+          var specific = require(file.path);
+
+          return _.merge(common, specific);
+        }))
+        .pipe($.template())
+        .pipe($.rename(function(widget) {
+          widget.basename = 'Widget - ' + basename;
+        }))
+        .pipe(gulp.dest('./addons'));
+    }));
+});
 
 /*
  * > Images
  */
-
-function getCache() {
-  var cache = {};
-
-  try {
-    cache = JSON.parse(fs.readFileSync('./images.cache', 'utf8'));
-  }
-  catch(e) {
-    console.log('No `images.cache` file!');
-  }
-  finally {
-    return cache;
-  }
-}
 
 gulp.task('optimize', function(cb) {
   runSequence(
@@ -350,14 +337,76 @@ gulp.task('optimize', function(cb) {
 
 gulp.task('optimize:assets', function() {
   return gulp.src('./assets/**/*.png')
-    .pipe($.imagemin([$.imagemin.optipng()], {verbose: true}))
+    .pipe($.imagemin([$.imagemin.optipng({
+      bitDepthReduction: false,
+      colorTypeReduction: false,
+      paletteReduction: false
+    })], {verbose: true}))
     .pipe(gulp.dest('./assets'));
 });
 
 gulp.task('optimize:icons', function() {
-  return gulp.src('./icons/**/*.png')
-    .pipe($.imagemin([$.imagemin.optipng()], {verbose: true}))
+  return gulp.src('./icons/*.png')
+    .pipe($.imagemin([$.imagemin.optipng({
+      bitDepthReduction: false,
+      colorTypeReduction: false,
+      paletteReduction: false
+    })], {verbose: true}))
     .pipe(gulp.dest('./icons'));
+});
+
+/*
+ * > Release
+ */
+
+gulp.task('changelog', function() {
+  return conventionalChangelog({
+    preset: 'angular',
+    releaseCount: 0
+  })
+  .pipe(fs.createWriteStream('CHANGELOG.md'));
+});
+
+gulp.task('bump', function(cb) {
+  runSequence(
+    'bump-pkg-version',
+    'bump-env-version',
+    function (error) {
+      if (error) {
+        console.log('[bump]'.bold.magenta + ' There was an issue bumping version:\n'.bold.red + error.message);
+      } else {
+        console.log('[bump]'.bold.magenta + ' Finished successfully'.bold.green);
+      }
+      cb(error);
+    }
+  );
+});
+
+gulp.task('bump-pkg-version', function() {
+  return gulp.src('./package.json')
+    .pipe($.if((Object.keys(argv).length === 2), $.bump()))
+    .pipe($.if(argv.patch, $.bump()))
+    .pipe($.if(argv.minor, $.bump({ type: 'minor' })))
+    .pipe($.if(argv.major, $.bump({ type: 'major' })))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-env-version', function() {
+  return gulp.src('./utils/environment.py')
+    .pipe($.if((Object.keys(argv).length === 2), $.bump({ regex: envRegExp })))
+    .pipe($.if(argv.patch, $.bump({ regex: envRegExp })))
+    .pipe($.if(argv.minor, $.bump({ type: 'minor', regex: envRegExp })))
+    .pipe($.if(argv.major, $.bump({ type: 'major', regex: envRegExp })))
+    .pipe(gulp.dest('./utils'));
+});
+
+gulp.task('github-release', function(done) {
+  conventionalGithubReleaser({
+    type: 'oauth',
+    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
+  }, {
+    preset: 'angular'
+  }, done);
 });
 
 
@@ -368,8 +417,10 @@ gulp.task('optimize:icons', function() {
 gulp.task('watch', function() {
   gulp.watch('./sources/themes/**/*.json', ['build:themes']);
   gulp.watch('./sources/schemes/scheme.YAML-tmTheme', ['build:schemes']);
+  gulp.watch('./sources/extras/**/*.YAML-tmTheme', ['build:extras']);
+  gulp.watch('./sources/addons/**/*.*', ['build:addons']);
   gulp.watch('./sources/widgets/widget.*', ['build:widgets']);
-  gulp.watch('./sources/settings/**/*.json', ['build:schemes', 'build:widgets', 'build:themes']);
+  gulp.watch('./sources/settings/**/*.json', ['build:schemes', 'build:extras', 'build:widgets', 'build:themes']);
 });
 
 

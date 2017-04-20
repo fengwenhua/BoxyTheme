@@ -1,6 +1,6 @@
 {
   "author": "Ihor Oleksandrov",
-  "comment": "Definitely, your next theme for Sublime Text 3",
+  "comment": "The most hackable theme for Sublime Text 3",
   "ui": {
     "base": {
       "black": {
@@ -154,6 +154,22 @@
           "highlighted": {
             "hex": "#e5eeff",
             "rgb": "229, 238, 255"
+          }
+        }
+      },
+      {
+        "id": "numix",
+        "name": "Numix",
+        "hex": "#d64937",
+        "rgb": "214, 73, 55",
+        "foreground": {
+          "default": {
+            "hex": "#f1bfb9",
+            "rgb": "241, 191, 185"
+          },
+          "highlighted": {
+            "hex": "#f6d8d4",
+            "rgb": "246, 216, 212"
           }
         }
       }

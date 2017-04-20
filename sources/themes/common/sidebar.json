@@ -11,6 +11,12 @@
   "content_margin": [0, 0, 0, 0]
 },
 
+{
+  "class": "sidebar_container",
+  "settings": ["theme_tab_rounded", "!theme_bar"],
+  "content_margin": [0, 4, 0, 0]
+},
+
 // Sidebar Tree
 // ===========================================================================
 
@@ -29,7 +35,7 @@
 {
   "class": "sidebar_tree",
   "settings": ["theme_sidebar_indent_top_level_disabled"],
-  "indent_offset": 16,
+  "indent_offset": 12,
   "indent_top_level": false
 },
 
@@ -73,6 +79,13 @@
   "attributes": ["selected"],
   "layer0.opacity": 1.0,
   "layer1.opacity": 1.0
+},
+
+{
+  "class": "tree_row",
+  "attributes": ["selected"],
+  "settings": ["theme_accent_mono"],
+  "layer1.opacity": 0.4
 },
 
 // Sidebar Labels
